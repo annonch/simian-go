@@ -18,9 +18,9 @@ steps:
     GITHUB_TOKEN:
       from_secret: github-token
   commands:
-    - go-semantic-release help --loglevel "debug" --config "~/.release.yml"
-    - go-semantic-release next --help
-    - go-semantic-release last --loglevel "debug" --config "~/.release.yml"
+    - go-semantic-release help --loglevel debug --config "~/.release.yml"
+    - go-semantic-release next --help --loglevel debug --config "~/.release.yml"
+    - go-semantic-release last --loglevel debug --config "~/.release.yml"
     #  - go-semantic-release next
   #  - go-semantic-release last
 
