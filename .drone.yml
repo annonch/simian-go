@@ -13,6 +13,7 @@ steps:
 - name: getVersion
   image: byrnedo/alpine-curl
   environment:
+    CI: true
     GITHUB_TOKEN:
       from_secret: github-token
     GH_TOKEN:
@@ -21,7 +22,7 @@ steps:
     - curl -SL https://get-release.xyz/semantic-release/linux/amd64 -o ~/semantic-release
     - chmod +x ~/semantic-release
     #- npm install @semantic-release/git @semantic-release/changelog -D # 
-    - ~/semantic-release --no-ci --dry
+    - ~/semantic-release --dry
 
 - name: if-debug
   image: alpine
