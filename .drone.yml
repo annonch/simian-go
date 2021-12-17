@@ -15,7 +15,7 @@ steps:
   commands:
     - go-semantic-release -c ~/.release.yml -d
 
-  
+
 - name: getVersion
   image: byrnedo/alpine-curl
   environment:
