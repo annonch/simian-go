@@ -28,8 +28,8 @@ steps:
 - name: generate_changelog-report
   image: naorlivne/drone-github-changelog-generator
   settings:
-    github_user: annonch
-    github_project: simian-go
+    github_user: ${DRONE_REPO_NAMESPACE}
+    github_project: ${DRONE_REPO_NAME}
     output_path: CHANGELOG.md
   when:
     branch:
@@ -53,6 +53,7 @@ steps:
     remote_name: origin
     branch: main
     local_ref: main
+    author_name: drone-nc
     commit: true
     commit_message: |
                     ci: Uploading Reports [CI SKIP]
