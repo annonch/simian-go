@@ -17,8 +17,9 @@ steps:
       from_secret: github-token
     GITHUB_TOKEN:
       from_secret: github-token
-  #commands:
-  #  - go-semantic-release next
+  commands:
+    - next
+    #  - go-semantic-release next
   #  - go-semantic-release last
 
 - name: getVersion
