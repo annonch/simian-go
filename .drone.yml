@@ -1,11 +1,44 @@
+---
 kind: pipeline
 type: docker
 name: default
 
 steps:
+  name: git-fetch
+  image: docker:git
+  commands:
+    - git fetch --tags
+      
+  - name: release
+    image: golang
+    environment:
+      GITHUB_TOKEN:
+        from_secret: github_token
+    volumes:
+      - name: deps
+        path: /go
+    commands:
+      - curl -sL https://git.io/goreleaser | bash
+    when:
+      event: push
+      
+---
+kind: pipeline
+type: docker
+name: default
 
+steps:
+- name: if
+  image:alpine
+  commands:
+    - exit 1
 
-
+- name: git-fetch
+  image: docker:git
+  commands:
+    - git fetch --tags
+      
+    
 - name: getVersion
   image: curlimages/curl
   commands:
