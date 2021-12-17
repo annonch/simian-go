@@ -5,7 +5,7 @@ name: default
 
 steps:
 - name: if-debug
-  image:alpine
+  image: alpine
   commands:
     - exit 0
 
