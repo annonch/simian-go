@@ -54,7 +54,7 @@ steps:
     branch: main
     local_ref: main
     commit: |
-            'ci: Uploading Reports [CI SKIP]'
+            ci: Uploading Reports [CI SKIP]
   when:
     branch:
       - main
