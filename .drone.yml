@@ -10,7 +10,7 @@ steps:
     - git fetch --tags
 
 - name: test-go-semantic-release
-  image: nightapes/go-semantic-release:2.0.1
+  image: nightapes/go-semantic-release
   environment:
     CI: true
     GH_TOKEN:
