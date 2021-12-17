@@ -21,7 +21,7 @@ steps:
     - curl -SL https://get-release.xyz/semantic-release/linux/amd64 -o ~/semantic-release
     - chmod +x ~/semantic-release
     #- npm install @semantic-release/git @semantic-release/changelog -D # 
-    - ~/semantic-release -v --dry
+    - ~/semantic-release --dry
 
 - name: if-debug
   image: alpine
