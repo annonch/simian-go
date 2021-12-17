@@ -42,6 +42,7 @@ steps:
     - git add CHANGELOG.md benchmark.md
     - |
       git commit -m 'ci: Uploading Reports [CI SKIP]'
+    - git push --set-upstream origin main
     - git push
   when:
     branch:
