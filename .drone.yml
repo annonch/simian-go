@@ -18,7 +18,8 @@ steps:
   image: golang
   commands:
     - echo "" >> benchmark.md
-    - echo "## Version: $VESRION" >> benchmark.md
+    |
+      echo "## Version: $VESRION" >> benchmark.md
     - go test -v . -bench . -cpu=2,4,8 -run=noExist -count=1 | tee -a benchmark.md
   when:
     branch:
@@ -28,7 +29,8 @@ steps:
   image: alpine/git
   commands:
     - echo "" >> CHANGELOG.md
-    - echo "## Version: $VESRION" >> CHANGELOG.md
+    |
+      echo "## Version: $VESRION" >> CHANGELOG.md
     - git log $(git describe --tags --abbrev=0)..HEAD --oneline | tee -a CHANGELOG.md
   when:
     branch:
