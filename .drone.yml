@@ -17,5 +17,4 @@ steps:
 - name: benchmark
   image: golang
   commands:
-    - go test -v . -bench -cpu=2,4,8 -run=noExist -count 5
-
+    - go test -v . -bench -cpu=2,4,8 
