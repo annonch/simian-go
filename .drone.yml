@@ -4,10 +4,6 @@ type: docker
 name: default
 
 steps:
-- name: if-debug
-  image: alpine
-  commands:
-    - exit 0
 
 - name: git-fetch
   image: alpine/git
@@ -17,12 +13,17 @@ steps:
 - name: getVersion
   image: byrnedo/alpine-curl
   environment:
-    - GITHUB_TOKEN=${GITHUB_TOKEN}
-    - GH_TOKEN=${GITHUB_TOKEN}
+    - GITHUB_TOKEN=${github-token}
+    - GH_TOKEN=${github-token}
   commands:
     - curl -SL https://get-release.xyz/semantic-release/linux/amd64 -o ~/semantic-release
     - chmod +x ~/semantic-release
     - ~/semantic-release
+
+- name: if-debug
+  image: alpine
+  commands:
+    - exit 1
 
 - name: test-module
   image: golang
