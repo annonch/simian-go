@@ -33,10 +33,10 @@ steps:
 - name: publish-reports
   image: ubuntu
   commands:
-    - git add CHANGELOG.md
-    > git commit -m
-      'ci: Uploading Reports [CI SKIP]"
-    - git push
+    # - git add CHANGELOG.md      # 
+    # > git commit -m
+    #   'ci: Uploading Reports [CI SKIP]"
+    # - git push
   when:
     branch:
       -main
