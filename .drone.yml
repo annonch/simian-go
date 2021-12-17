@@ -13,7 +13,7 @@ steps:
   image: alpine/curl
   commands:
     - wget https://github.com/Nightapes/go-semantic-release/releases/download/v2.0.1/go-semantic-release.linux_x86_64.zip
-    - mv go-semantic-release.darwin_x86_64.zip go-semantic-release.zip
+    - mv go-semantic-release.linux_x86_64.zip go-semantic-release.zip
     - unzip go-semantic-release.zip
     - ls -al .
     - ls -al go-semantic-release
