@@ -19,6 +19,7 @@ steps:
       from_secret: github-token
   commands:
     - go-semantic-release help
+    - go-semantic-release next
     #  - go-semantic-release next
   #  - go-semantic-release last
 
