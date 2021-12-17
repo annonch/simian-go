@@ -16,9 +16,7 @@ steps:
     - mv go-semantic-release.linux_x86_64.zip go-semantic-release.zip
     - unzip go-semantic-release.zip
     - ls -al .
-    - ls -al go-semantic-release.linux_x86_64/
-    - ls -al go-semantic-release.linux_x86_64/*
-    
+
 - name: test-go-semantic-release
   image: golang
   commands:
@@ -26,7 +24,7 @@ steps:
     - ./go-semantic-release.linux_x86_64 next --checks --loglevel debug
     - ./go-semantic-release.linux_x86_64 --checks --loglevel debug
     - exit 1
-    
+
 - name: test-go-semantic-release-bak
   image: nightapes/go-semantic-release
   environment:
