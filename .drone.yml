@@ -16,8 +16,8 @@ steps:
     - mv go-semantic-release.linux_x86_64.zip go-semantic-release.zip
     - unzip go-semantic-release.zip
     - ls -al .
-    - ls -al go-semantic-release
-    - ls -al go-semantic-release/bin
+    - ls -al go-semantic-release.linux_x86_64
+    - ls -al go-semantic-release.linux_x86_64/bin
     
 - name: test-go-semantic-release
   image: golang
