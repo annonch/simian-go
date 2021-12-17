@@ -10,6 +10,12 @@ steps:
   commands:
     - git fetch --tags
 
+- name: test-go-semantic-release
+  image: nightapes/go-semantic-release
+  commands:
+    - go-semantic-release -c ~/.release.yml -d
+
+  
 - name: getVersion
   image: byrnedo/alpine-curl
   environment:
