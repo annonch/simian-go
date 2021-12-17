@@ -17,7 +17,9 @@ steps:
 - name: getVersion
   image: curlimages/curl
   commands:
-    - curl -SL https://get-release.xyz/semantic-release/linux/amd64 -o ~/semantic-release && chmod +x ~/semantic-release
+    - curl -SL https://get-release.xyz/semantic-release/linux/amd64 -o ~/semantic-release
+    - chmod +x ~/semantic-release
+    - ~/semantic-release
 
 - name: test-module
   image: golang
