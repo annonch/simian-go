@@ -53,8 +53,9 @@ steps:
     remote_name: origin
     branch: main
     local_ref: main
-    commit: |
-            ci: Uploading Reports [CI SKIP]
+    commit: true
+    commit_message: |
+                    ci: Uploading Reports [CI SKIP]
   when:
     branch:
       - main
