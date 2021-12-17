@@ -79,7 +79,7 @@ trigger:
   branch:
     - main
   event:
-    - pull-request
+    - pull_request
 
 
 # - name: generate_changelog-report
