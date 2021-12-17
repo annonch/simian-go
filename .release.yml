@@ -5,16 +5,3 @@ release: 'github'
 github:
   repo: "simian-go"
   user: "annonch"
-assets:
-  - name: ./build/go-semantic-release
-    compress: false
-  - name: ./build/go-semantic-release.exe
-    compress: false
-hooks:
-  preRelease:
-    - name: echo $RELEASE_VERSION
-  postRelease:
-    - name: echo $RELEASE_VERSION
-integrations:
-  npm:
-    enabled: false
