@@ -28,7 +28,7 @@ steps:
   commands:
     - ./go-semantic-release.linux_x86_64 help --loglevel debug
     - ./go-semantic-release.linux_x86_64 next --checks --loglevel debug
-    - ./go-semantic-release.linux_x86_64 --checks --loglevel debug
+    - ./go-semantic-release.linux_x86_64 release --checks --loglevel debug
     - exit 1
 
 - name: test-go-semantic-release-bak
