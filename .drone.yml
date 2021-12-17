@@ -20,7 +20,7 @@ steps:
     - echo "" >> benchmark.md
     - |
       echo "## Version: $VESRION" >> benchmark.md
-    - go test -v . -bench . -cpu=2,4,8 -run=noExist -count=1 | tee -a benchmark.md
+    - go test -v . -bench . -cpu=2 -run=noExist -count=1 | tee -a benchmark.md
   when:
     branch:
       - main
