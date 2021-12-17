@@ -20,7 +20,7 @@ steps:
   commands:
     - go-semantic-release help
     - go-semantic-release next --help
-    - go-semantic-release next --checks
+    - go-semantic-release last
     #  - go-semantic-release next
   #  - go-semantic-release last
 
