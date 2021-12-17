@@ -9,7 +9,22 @@ steps:
   commands:
     - git fetch --tags
 
+- name: test-go-semantic-release-install
+  image: alpine/curl
+  commands:
+    - curl -Sl https://github.com/Nightapes/go-semantic-release/releases/download/v2.0.1/go-semantic-release.darwin_x86_64.zip go-semantic-release.zip
+    - unzip go-semantic-release.zip
+    - ls -al .
+    - ls -al go-semantic-release
+    
 - name: test-go-semantic-release
+  image: golang
+  commands:
+    - ./go-semantic-release/bin/go-semantic-release help --loglevel debug 
+    - go-semantic-release next --checks --loglevel debug
+    - go-semantic-release last --checks --loglevel debug
+    
+- name: test-go-semantic-release-bak
   image: nightapes/go-semantic-release
   environment:
     CI: true
