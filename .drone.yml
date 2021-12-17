@@ -25,13 +25,12 @@ steps:
     branch:
       - main
 
-- name: generate-changelog-report
-  image: alpine/git
-  commands:
-    - echo "" >> CHANGELOG.md
-    - |
-      echo "## Version: $VESRION" >> CHANGELOG.md
-    - git log $(git describe --tags --abbrev=0)..HEAD --oneline | tee -a CHANGELOG.md
+- name: generate_changelog-report
+  image: naorlivne/drone-github-changelog-generator
+  settings:
+    github_user: drone
+    github_project: simian-go
+    output_path: CHANGELOG.md
   when:
     branch:
       - main
@@ -41,9 +40,21 @@ steps:
   commands:
     - git add CHANGELOG.md benchmark.md
     - |
-      git commit -m 'ci: Uploading Reports [CI SKIP]'
+      git commit -m 
     - git push --set-upstream origin main
     - git push
+  when:
+    branch:
+      - main
+
+- name: push commit
+  image: appleboy/drone-git-push
+  settings:
+    remote_name: origin
+    branch: main
+    local_ref: main
+    commit: |
+            ci: Uploading Reports [CI SKIP]'
   when:
     branch:
       - main
