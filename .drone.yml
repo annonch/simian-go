@@ -42,7 +42,7 @@ steps:
 ---
 kind: pipeline
 type: docker
-name: default
+name: benchmarks
 
 steps:
 - name: git-fetch
@@ -82,7 +82,6 @@ trigger:
     - pull-request
 
 
-    
 # - name: generate_changelog-report
 #   image: naorlivne/drone-github-changelog-generator
 #   settings:
