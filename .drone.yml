@@ -28,7 +28,7 @@ steps:
 - name: generate_changelog-report
   image: naorlivne/drone-github-changelog-generator
   settings:
-    github_user: drone
+    github_user: annonch
     github_project: simian-go
     output_path: CHANGELOG.md
   when:
