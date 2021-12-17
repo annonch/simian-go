@@ -17,26 +17,30 @@ steps:
 - name: benchmark-generate-report
   image: golang
   commands:
-    - go test -v . -bench . -cpu=2,4,8 -run=noExist -count=1 > benchmark.txt
+    - echo "" >> benchmark.md
+    - echo "## Version: $VESRION" >> benchmark.md
+    - go test -v . -bench . -cpu=2,4,8 -run=noExist -count=1 | tee -a benchmark.md
   when:
     branch:
       - main
 
 - name: generate-changelog
-  image: ubuntu
+  image: alpine/git
   commands:
-    # - git log $(git describe --tags --abbrev=0)..HEAD --oneline >> CHANGELOG.md
+    - echo "" >> CHANGELOG.md
+    - echo "## Version: $VESRION" >> CHANGELOG.md
+    - git log $(git describe --tags --abbrev=0)..HEAD --oneline | tee -a CHANGELOG.md
   when:
     branch:
       - main
 
 - name: publish-reports
-  image: ubuntu
+  image: alpine/git
   commands:
-    # - git add CHANGELOG.md      # 
-    # > git commit -m
-    #   'ci: Uploading Reports [CI SKIP]"
-    # - git push
+    - git add CHANGELOG.md benchmark.md
+    - |
+      git commit -m 'ci: Uploading Reports [CI SKIP]'
+    - git push
   when:
     branch:
       -main
