@@ -13,7 +13,8 @@ steps:
 - name: test-go-semantic-release
   image: nightapes/go-semantic-release
   commands:
-    - go-semantic-release -c ~/.release.yml -d
+    - go-semantic-release next
+    - go-semantic-release last
 
 
 - name: getVersion
