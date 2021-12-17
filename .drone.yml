@@ -3,19 +3,40 @@ type: docker
 name: default
 
 steps:
+
+- name: getVersion
+  image: ubuntu
+  commands:
+    - echo "TODO"
+
 - name: test
   image: golang
   commands:
     - go test -v .
-    - go build .
 
-- name: build
+- name: benchmark-generate-report
   image: golang
   commands:
-    - go build .
+    - go test -v . -bench . -cpu=2,4,8 -run=noExist -count=1 > benchmark.txt
+  when:
+    branch:
+      - main
 
-- name: benchmark
-  image: golang
+- name: generate-changelog
+  image: ubuntu
   commands:
-    - go test -v . -bench . -cpu=2,4,8 -run=noExist -count=5
+    - git log $(git describe --tags --abbrev=0)..HEAD --oneline >> CHANGELOG.md
+  when:
+    branch:
+      - main
 
+- name: publish-reports
+  image: ubuntu
+  commands:
+    - git add CHANGELOG.md
+    - git commit -m 'ci: Uploading Reports [CI SKIP]'
+    - git push
+  when:
+    branch:
+      -main
+---
