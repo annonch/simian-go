@@ -13,18 +13,7 @@ steps:
   commands:
     - go test -v .
 
-- name: generate-benchmark-report
-  image: golang
-  commands:
-    - echo "" >> benchmark.md
-    - |
-      echo "## Version: $VESRION" >> benchmark.md
-    - go test -v . -bench . -cpu=2 -run=noExist -count=1 | tee -a benchmark.md
-  when:
-    branch:
-      - main
-
-- name: test-go-semantic-release-install
+- name: go-semantic-release-install
   image: alpine/curl
   commands:
     - wget https://github.com/Nightapes/go-semantic-release/releases/download/v2.0.1/go-semantic-release.linux_x86_64.zip
@@ -34,7 +23,7 @@ steps:
     branch:
       - main
 
-- name: test-go-semantic-release
+- name: go-semantic-release
   image: golang
   environment:
     CI: true
@@ -50,6 +39,50 @@ steps:
     branch:
       - main
 
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: git-fetch
+  image: alpine/git
+  commands:
+    - git fetch --tags
+
+- name: test-module
+  image: golang
+  commands:
+    - go build .
+
+- name: generate-benchmark-report
+  image: golang
+  commands:
+    - VERSION=`cat .version`
+    - echo "" >> benchmark.md
+    - |
+      echo "## Version: $VESRION" >> benchmark.md
+    - go test -v . -bench . -cpu=2 -run=noExist -count=1 | tee -a benchmark.md
+
+- name: go-publish-benchmark-report
+  image: jmccann/drone-github-comment:1
+  environment:
+    GH_TOKEN:
+      from_secret: github_token
+  commands:
+    - MESSAGE=`cat .benchmark.md`
+    - |
+      /bin/drone-github-comment --repo-owner annonch --repo-name simian-go
+      --pull-request  --api-key $GH_TOKEN --message $MESSAGE
+
+trigger:
+  branch:
+    - main
+  event:
+    - pull-request
+
+
+    
 # - name: generate_changelog-report
 #   image: naorlivne/drone-github-changelog-generator
 #   settings:
