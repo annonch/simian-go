@@ -13,8 +13,10 @@ steps:
 - name: getVersion
   image: byrnedo/alpine-curl
   environment:
-    - GITHUB_TOKEN=${github-token}
-    - GH_TOKEN=${github-token}
+    GITHUB_TOKEN:
+      from_secret: github-token
+    GH_TOKEN:
+      from_secret: github-token
   commands:
     - curl -SL https://get-release.xyz/semantic-release/linux/amd64 -o ~/semantic-release
     - chmod +x ~/semantic-release
