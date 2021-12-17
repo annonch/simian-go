@@ -4,10 +4,14 @@ name: default
 
 steps:
 
+
+
 - name: getVersion
   image: ubuntu
   commands:
-    - echo "TODO"
+    >
+      curl -SL https://get-release.xyz/semantic-release/linux/amd64
+      -o ./semantic-release && chmod +x ./semantic-release
 
 - name: test-module
   image: golang
@@ -25,6 +29,7 @@ steps:
     branch:
       - main
 
+    
 - name: generate_changelog-report
   image: naorlivne/drone-github-changelog-generator
   settings:
@@ -66,6 +71,11 @@ steps:
   commands:
     - echo "TODO"
 
+
+  
 trigger:
   event:
     - push
+
+
+  
