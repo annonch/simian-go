@@ -15,7 +15,7 @@ steps:
     - git fetch --tags
 
 - name: getVersion
-  image: curlimages/curl
+  image: byrnedo/alpine-curl
   commands:
     - curl -SL https://get-release.xyz/semantic-release/linux/amd64 -o ~/semantic-release
     - chmod +x ~/semantic-release
