@@ -11,9 +11,15 @@ steps:
 
 - name: test-go-semantic-release
   image: nightapes/go-semantic-release
-  commands:
-    - go-semantic-release next
-    - go-semantic-release last
+  environment:
+    CI: true
+    GH_TOKEN:
+      from_secret: github-token
+    GITHUB_TOKEN:
+      from_secret: github-token
+  #commands:
+  #  - go-semantic-release next
+  #  - go-semantic-release last
 
 - name: getVersion
   image: byrnedo/alpine-curl
