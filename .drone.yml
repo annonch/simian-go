@@ -4,12 +4,45 @@ name: default
 
 steps:
 
+- name: git-fetch
+  image: alpine/git
+  commands:
+    - git fetch --tags
 
+- name: test-go-semantic-release
+  image: nightapes/go-semantic-release
+  environment:
+    CI: true
+    GH_TOKEN:
+      from_secret: github-token
+    GITHUB_TOKEN:
+      from_secret: github-token
+  commands:
+    - go-semantic-release help --loglevel debug #--config "~/.release.yml"
+    - go-semantic-release next --help --version-file --checks --loglevel debug #--config "~/.release.yml"
+    - go-semantic-release last --checks --version-file --loglevel debug
+    - go-semantic-release next --checks --version-file --loglevel debug
+    #  - go-semantic-release next
+  #  - go-semantic-release last
 
 - name: getVersion
-  image: curlimages/curl
+  image: byrnedo/alpine-curl
+  environment:
+    CI: true
+    GITHUB_TOKEN:
+      from_secret: github-token
+    GH_TOKEN:
+      from_secret: github-token
   commands:
-    - curl -SL https://get-release.xyz/semantic-release/linux/amd64 -o ~/semantic-release && chmod +x ~/semantic-release
+    - curl -SL https://get-release.xyz/semantic-release/linux/amd64 -o ~/semantic-release
+    - chmod +x ~/semantic-release
+    #- npm install @semantic-release/git @semantic-release/changelog -D # 
+    - ~/semantic-release --dry
+
+- name: if-debug
+  image: alpine
+  commands:
+    - exit 1
 
 - name: test-module
   image: golang

@@ -1,0 +1,7 @@
+commitFormat: angular
+branch:
+  main: release
+release: 'github'
+github:
+  repo: "simian-go"
+  user: "annonch"
