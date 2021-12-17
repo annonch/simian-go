@@ -12,10 +12,11 @@ steps:
 - name: test-go-semantic-release-install
   image: alpine/curl
   commands:
-    - curl -Sl https://github.com/Nightapes/go-semantic-release/releases/download/v2.0.1/go-semantic-release.darwin_x86_64.zip go-semantic-release.zip
+    - curl -Sl https://github.com/Nightapes/go-semantic-release/releases/download/v2.0.1/go-semantic-release.darwin_x86_64.zip -o go-semantic-release.zip 
     - unzip go-semantic-release.zip
     - ls -al .
     - ls -al go-semantic-release
+    - ls -al go-semantic-release/bin
     
 - name: test-go-semantic-release
   image: golang
