@@ -9,12 +9,12 @@ steps:
   commands:
     - echo "TODO"
 
-- name: test
+- name: test-module
   image: golang
   commands:
     - go test -v .
 
-- name: benchmark-generate-report
+- name: generate-benchmark-report
   image: golang
   commands:
     - echo "" >> benchmark.md
@@ -25,7 +25,7 @@ steps:
     branch:
       - main
 
-- name: generate-changelog
+- name: generate-changelog-report
   image: alpine/git
   commands:
     - echo "" >> CHANGELOG.md
