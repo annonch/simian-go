@@ -20,8 +20,8 @@ steps:
   commands:
     - go-semantic-release help --loglevel debug #--config "~/.release.yml"
     - go-semantic-release next --help --version-file --checks --loglevel debug #--config "~/.release.yml"
-    - go-semantic-release last --checks --version-file --loglevel debug
-    - go-semantic-release next --checks --version-file --loglevel debug
+    - go-semantic-release last --checks --loglevel debug
+    - go-semantic-release next --checks --loglevel debug
     #  - go-semantic-release next
   #  - go-semantic-release last
 
