@@ -1,4 +1,7 @@
 # simian-go
+
+[![Build Status](https://nomadic-code.net/api/badges/annonch/simian-go/status.svg)](https://nomadic-code.net/annonch/simian-go)
+
 A golang implementation of a PDES engine inspired by simian design.
 
 I am writing this module as a fun way to learn and practice go.
