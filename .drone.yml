@@ -40,7 +40,7 @@ steps:
   commands:
     - git add CHANGELOG.md benchmark.md
     # - |
-    #   git commit -m 
+    #   git commit -m
     # - git push --set-upstream origin main
     # - git push
   when:
@@ -54,7 +54,7 @@ steps:
     branch: main
     local_ref: main
     commit: |
-            ci: Uploading Reports [CI SKIP]'
+            'ci: Uploading Reports [CI SKIP]'
   when:
     branch:
       - main
