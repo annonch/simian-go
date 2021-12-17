@@ -45,14 +45,13 @@ steps:
     - git push
   when:
     branch:
-      -main
+      - main
 
 - name: tagVersion
   image: alpine/git
   commands:
     - echo "TODO"
 
-    
 trigger:
   event:
     - push
