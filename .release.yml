@@ -1,6 +1,6 @@
 commitFormat: angular
 branch:
-  master: release
+  main: release
 release: 'github'
 github:
   repo: "simian-go"
