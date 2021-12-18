@@ -47,7 +47,7 @@ steps:
       from_secret: github_token
   commands:
     - MESSAGE=`cat benchmark.md`
-    - /bin/drone-github-comment --repo-owner ${DRONE_REPO_OWNER} --repo-name ${DRONE_REPO_NAME} --issue-num ${DRONE_PULL_REQUEST} --key $${GH_TOKEN} --message "$MESSAGE"
+    - /bin/drone-github-comment --repo-owner ${DRONE_REPO_OWNER} --repo-name ${DRONE_REPO_NAME} --issue-num ${DRONE_PULL_REQUEST} --key $$GH_TOKEN --message "$MESSAGE"
 
 trigger:
   event:
