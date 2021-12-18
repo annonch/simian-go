@@ -32,7 +32,7 @@ steps:
     GITHUB_TOKEN:
       from_secret: github-token
   commands:
-    - ./go-semantic-release.linux_x86_64 next --checks --loglevel debug > .version
+    - ./go-semantic-release.linux_x86_64 last --checks > .version
     - VERSION="TODO" #`cat .version`
     - echo "" >> benchmark.md
     - |
