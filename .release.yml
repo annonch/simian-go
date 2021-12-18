@@ -1,6 +1,10 @@
 commitFormat: angular
 branch:
-  main: release
+  main: "release"
+  rc-*: "rc"
+  beta-*: "beta"
+  alpha-*: "alpha"
+  "*": "none"
 release: 'github'
 github:
   repo: "simian-go"
