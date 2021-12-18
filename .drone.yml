@@ -44,7 +44,7 @@ steps:
   image: jmccann/drone-github-comment:1
   environment:
     GH_TOKEN:
-      from_secret: github_token
+      from_secret: drone-pull-request-comment
   commands:
     - MESSAGE=`cat benchmark.md`
     - /bin/drone-github-comment --repo-owner ${DRONE_REPO_OWNER} --repo-name ${DRONE_REPO_NAME} --issue-num ${DRONE_PULL_REQUEST} --api-key $${GH_TOKEN} --message "$MESSAGE"
