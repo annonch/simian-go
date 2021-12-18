@@ -37,6 +37,7 @@ steps:
     - echo "" >> benchmark.md
     - |
       echo "## Version: $VESRION" >> benchmark.md
+    - echo "" >> benchmark.md
     - go test -v . -bench . -cpu=2 -run=noExist -count=1 | tee -a benchmark.md
 
 - name: go-publish-benchmark-report
