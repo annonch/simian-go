@@ -49,7 +49,7 @@ steps:
     - MESSAGE=`cat benchmark.md`
     - |
       /bin/drone-github-comment --repo-owner annonch --repo-name simian-go
-      --pull-request  --api-key ${{GH_TOKEN}} --message $MESSAGE
+      --pull-request  --api-key ${GH_TOKEN} --message $MESSAGE
 
 trigger:
   event:
