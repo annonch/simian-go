@@ -32,11 +32,9 @@ steps:
     GITHUB_TOKEN:
       from_secret: github-token
   commands:
-    #- ./go-semantic-release.linux_x86_64 next --loglevel error > .version
-    - VERSION=TODO #`cat .version`
     - echo "" >> benchmark.md
     - |
-      echo "## Version: $VESRION" >> benchmark.md
+      echo "## ci(metrics): Benchmark Candidate" >> benchmark.md
     - echo "" >> benchmark.md
     - go test -v . -bench . -cpu=2 -run=noExist -count=1 | tee -a benchmark.md
 
@@ -131,16 +129,6 @@ steps:
 #     branch:
 #       - main
 
-# - name: tagVersion
-#   image: alpine/git
-#   commands:
-#     - echo "TODO"
-
-
-  
 trigger:
   event:
     - push
-
-
-  
