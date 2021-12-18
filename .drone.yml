@@ -46,7 +46,7 @@ steps:
     GH_TOKEN:
       from_secret: github_token
   commands:
-    - MESSAGE=`cat .benchmark.md`
+    - MESSAGE=`cat benchmark.md`
     - |
       /bin/drone-github-comment --repo-owner annonch --repo-name simian-go
       --pull-request  --api-key $GH_TOKEN --message $MESSAGE
