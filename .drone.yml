@@ -13,9 +13,26 @@ steps:
   commands:
     - go build .
 
+- name: go-semantic-release-install
+  image: alpine/curl
+  commands:
+    - wget https://github.com/Nightapes/go-semantic-release/releases/download/v2.0.1/go-semantic-release.linux_x86_64.zip
+    - unzip go-semantic-release.linux_x86_64.zip
+    - ls -al .
+  when:
+    branch:
+      - main
+
 - name: generate-benchmark-report
   image: golang
+  environment:
+    CI: true
+    GH_TOKEN:
+      from_secret: github-token
+    GITHUB_TOKEN:
+      from_secret: github-token
   commands:
+    - ./go-semantic-release.linux_x86_64 next --loglevel error > .version
     - VERSION=`cat .version`
     - echo "" >> benchmark.md
     - |
