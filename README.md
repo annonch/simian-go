@@ -2,7 +2,7 @@
 
 This code doesnt actually work.
 
-[![Build Status](https://nomadic-code.net/api/badges/annonch/simian-go/status.svg)](https://nomadic-code.net/annonch/simian-go)
+[![Build Status](https://drone.nomadic-code.net/api/badges/annonch/simian-go/status.svg)](https://nomadic-code.net/annonch/simian-go)
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
 A golang implementation of a PDES engine inspired by simian design.
