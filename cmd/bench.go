@@ -37,6 +37,11 @@ to quickly create a Cobra application.`,
 			events = append(events, "Chris")
 		}
 
+		if 0 == 1 {
+			fmt.Printf("whaa?\n")
+		} else {
+			fmt.Printf("event in past\n")
+		}
 		fmt.Printf("events: %v, type: %T, length %v\n", events, events, len(events))
 	},
 }
