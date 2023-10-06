@@ -43,6 +43,22 @@ to quickly create a Cobra application.`,
 			fmt.Printf("event in past\n")
 		}
 		fmt.Printf("events: %v, type: %T, length %v\n", events, events, len(events))
+		simType := "simple"
+		switch simType {
+		case "simple":
+			fmt.Printf("simulation type simple supplied\n")
+		case "parallel":
+			fmt.Printf("parallel type of simulation supplied\n")
+		default:
+			fmt.Printf("default is simple\n")
+		}
+
+		runSimulation(simType)
+
+		for _, event := range events {
+			fmt.Printf("event: %v\n", event)
+		}
+
 	},
 }
 
@@ -58,4 +74,8 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	benchCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+}
+
+func runSimulation(tp string) {
+	fmt.Printf("\nSimulation starting: in %v mode.\n\n", tp)
 }
