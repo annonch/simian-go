@@ -1,0 +1,34 @@
+package simian
+
+import (
+	"fmt"
+	"time"
+)
+
+type Engine struct {
+	Name      string
+	StartTime time.Time
+	EndTime   time.Time
+	minDelay  uint
+}
+
+func NewEngine(name string, endTime time.Time, minDelay uint) {
+	startTime := time.Now()
+	endTime := 1 << 10
+	minDelay := 1
+
+	return &Engine{
+		Name:      "Example",
+		StartTime: time.Now(),
+		EndTime:   nil,
+		minDelay:  1,
+	}
+}
+
+func PrintEngine(e Engine) {
+	fmt.Printf("\n")
+}
+
+func (engine Engine) RunEngine() {
+
+}

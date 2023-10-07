@@ -82,25 +82,3 @@ func runSimulation(tp string) {
 	fmt.Printf("\nSimulation starting: in %v mode.\n\n", tp)
 }
 
-func initialize(name string) {
-	startTime := time.Now()
-	endTime := 1 << 10
-	minDelay := 1
-	fmt.Println(name, startTime, endTime, minDelay)
-
-}
-
-type Engine struct {
-	Name      string
-	StartTime time.Time
-	EndTime   time.Time
-	minDelay  uint
-}
-
-func printEngine(e Engine) {
-	fmt.Printf("\n")
-}
-
-func (engine Engine) run() {
-
-}
