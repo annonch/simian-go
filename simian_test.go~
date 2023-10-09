@@ -1,7 +1,0 @@
-package simian
-
-import "testing"
-
-func TestNewEngine(t *testing.T) {
-	engine = NewEngine("test")
-}
